@@ -3,17 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using MyFirstApi.Models;
 using MyFirstApi.Services;
 
-namespace MyApp.Controllers
+namespace MyFirstApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase
     {
-        private readonly PostService _postsService;
+        private readonly IPostService _postsService;
 
-        public PostsController()
+        public PostsController(IPostService postService)
         {
-            _postsService = new PostService();
+            _postsService = postService;
         }
 
         [HttpGet("{id}")]

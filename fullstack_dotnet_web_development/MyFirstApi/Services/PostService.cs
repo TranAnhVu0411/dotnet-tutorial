@@ -6,7 +6,7 @@ using MyFirstApi.Models;
 
 namespace MyFirstApi.Services
 {
-    public class PostService
+    public class PostService : IPostService
     {
         private static readonly List<Post> AllPosts = new();
         public Task CreatePost(Post item)
