@@ -3,6 +3,7 @@ using MyFirstApi.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Mapping IPostService and PostService
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
