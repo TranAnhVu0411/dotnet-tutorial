@@ -1,0 +1,6 @@
+// Simple middleware 
+// (All requests will return a "Hello world!" response)
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("Hello world");
+});

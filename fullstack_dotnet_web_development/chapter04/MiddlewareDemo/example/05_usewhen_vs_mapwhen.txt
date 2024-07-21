@@ -1,0 +1,44 @@
+// Different between UseWhen vs MapWhen (Comment and UnComment the section to run example)
+// UseWhen:
+// When condition is true (In this case is when URL contain query "branch", 
+// like "http://localhost:5036/?branch=1), sub-middleware inside UseWhen is executed,
+// after it's finished, the final middleware (app.Run) will be executed
+app.UseWhen(context => context.Request.Query.ContainsKey("branch"), app => 
+{
+    app.Use(async (context, next) => 
+    {
+        var logger = app.ApplicationServices.GetRequiredService<ILogger<Program>>();
+        logger.LogInformation($"From UseWhen(): Branch used = {context.Request.Query["branch"]}");
+        await next();
+    });
+});
+
+// MapWhen
+// When condition is true (In this case is when URL contain query "branch", 
+// like "http://localhost:5036/?branch=1), sub-middleware inside UseWhen is executed,
+// BUT after next() method is called inside the sub-middleware, it does not have a next
+// middleware component to execute, even though there is an app.Run() method defined at
+// the end of the program => Return 404 error
+app.MapWhen(context => context.Request.Query.ContainsKey("branch"), app => 
+{
+    app.Use(async (context, next) => 
+    {
+        var logger = app.ApplicationServices.GetRequiredService<ILogger<Program>>();
+        logger.LogInformation($"From MapWhen(): Branch used = {context.Request.Query["branch"]}");
+        await next();
+    });
+
+    // Solution for the mentioned problem
+    // Adding a middleware after the above middleware
+    app.Run(async context =>
+    {
+        var branchVer = context.Request.Query["branch"];
+        await context.Response.WriteAsync($"Branch used = {branchVer}");
+    });
+});
+
+// When condition is false, It will automatically go to the final middleware
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("Hello, world");
+});

@@ -1,0 +1,11 @@
+// Use "use" to add middleware components to the pipeline
+app.Use(async (context, next) =>
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation($"Request Host: {context.Request.Host}");
+    logger.LogInformation($"Request Host: {context.Request.Path}");
+    logger.LogInformation("My Middleware - before");
+    await next(context);
+    logger.LogInformation("My Middleware - after");
+    logger.LogInformation($"Response StatusCode: {context.Response.StatusCode}");
+});

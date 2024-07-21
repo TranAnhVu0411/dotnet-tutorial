@@ -1,0 +1,25 @@
+// Use multiple middleware components
+app.Use(async (context, next) =>
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation($"ClientName HttpReader in Middleware 1: {context.Request.Headers["ClientName"]}");
+    // Middleware 1 add ClientName to Request Header 
+    // (Before this command there is no ClientName in Request Header)
+    logger.LogInformation($"Add a ClientName HttpHeader in Middleware 1");
+    context.Request.Headers.TryAdd("ClientName", "Windows");
+    logger.LogInformation("My middleware 1 - before");
+    await next(context);
+    logger.LogInformation("My middleware 1 - after");
+    logger.LogInformation($"Response StatusCode in Middleware 1: {context.Response.StatusCode}");
+});
+
+app.Use(async (context, next) =>
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation($"ClientName HttpHeader in Middleware 2: {context.Request.Headers["ClientName"]}");
+    logger.LogInformation("My middleware 2 - before");
+    context.Response.StatusCode = StatusCodes.Status202Accepted;
+    await next(context);
+    logger.LogInformation("My middleware 2 - after");
+    logger.LogInformation($"Response StatusCode in Middleware 2: {context.Response.StatusCode}");
+});
