@@ -25,14 +25,14 @@ namespace EfCoreRelationshipDemo.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Address>>> GetAddress()
         {
-            return await _context.Address.ToListAsync();
+            return await _context.Addresses.ToListAsync();
         }
 
         // GET: api/Addresses/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Address>> GetAddress(Guid id)
         {
-            var address = await _context.Address.FindAsync(id);
+            var address = await _context.Addresses.FindAsync(id);
 
             if (address == null)
             {
@@ -78,7 +78,7 @@ namespace EfCoreRelationshipDemo.Controllers
         [HttpPost]
         public async Task<ActionResult<Address>> PostAddress(Address address)
         {
-            _context.Address.Add(address);
+            _context.Addresses.Add(address);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAddress", new { id = address.Id }, address);
@@ -88,13 +88,13 @@ namespace EfCoreRelationshipDemo.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAddress(Guid id)
         {
-            var address = await _context.Address.FindAsync(id);
+            var address = await _context.Addresses.FindAsync(id);
             if (address == null)
             {
                 return NotFound();
             }
 
-            _context.Address.Remove(address);
+            _context.Addresses.Remove(address);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace EfCoreRelationshipDemo.Controllers
 
         private bool AddressExists(Guid id)
         {
-            return _context.Address.Any(e => e.Id == id);
+            return _context.Addresses.Any(e => e.Id == id);
         }
     }
 }

@@ -25,14 +25,14 @@ namespace EfCoreRelationshipDemo.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contact>>> GetContact()
         {
-            return await _context.Contact.ToListAsync();
+            return await _context.Contacts.ToListAsync();
         }
 
         // GET: api/Contacts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Contact>> GetContact(Guid id)
         {
-            var contact = await _context.Contact.FindAsync(id);
+            var contact = await _context.Contacts.FindAsync(id);
 
             if (contact == null)
             {
@@ -78,7 +78,7 @@ namespace EfCoreRelationshipDemo.Controllers
         [HttpPost]
         public async Task<ActionResult<Contact>> PostContact(Contact contact)
         {
-            _context.Contact.Add(contact);
+            _context.Contacts.Add(contact);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetContact", new { id = contact.Id }, contact);
@@ -88,13 +88,13 @@ namespace EfCoreRelationshipDemo.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact(Guid id)
         {
-            var contact = await _context.Contact.FindAsync(id);
+            var contact = await _context.Contacts.FindAsync(id);
             if (contact == null)
             {
                 return NotFound();
             }
 
-            _context.Contact.Remove(contact);
+            _context.Contacts.Remove(contact);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace EfCoreRelationshipDemo.Controllers
 
         private bool ContactExists(Guid id)
         {
-            return _context.Contact.Any(e => e.Id == id);
+            return _context.Contacts.Any(e => e.Id == id);
         }
     }
 }
