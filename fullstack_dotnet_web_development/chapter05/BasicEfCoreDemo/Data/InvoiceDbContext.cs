@@ -33,7 +33,7 @@ namespace BasicEfCoreDemo.Data
                     Amount = 100,
                     InvoiceDate = new DateTimeOffset(2023, 2, 1, 0, 0, 0, TimeSpan.Zero),
                     DueDate = new DateTimeOffset(2023, 2, 15, 0, 0, 0, TimeSpan.Zero),
-                    Status = InvoiceStatus.AwaitPayment
+                    Status = InvoiceStatus.Paid
                 },
                 new Invoice
                 {
@@ -55,7 +55,7 @@ namespace BasicEfCoreDemo.Data
                     Amount = 100,
                     InvoiceDate = new DateTimeOffset(2023, 2, 1, 0, 0, 0, TimeSpan.Zero),
                     DueDate = new DateTimeOffset(2023, 2, 15, 0, 0, 0, TimeSpan.Zero),
-                    Status = InvoiceStatus.AwaitPayment
+                    Status = InvoiceStatus.Draft
                 }
             );
 

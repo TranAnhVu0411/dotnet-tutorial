@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BasicEfCoreDemo.Migrations
 {
     [DbContext(typeof(InvoiceDbContext))]
-    [Migration("20240719084157_UpdateTableField")]
-    partial class UpdateTableField
+    [Migration("20240723021752_UpdateDataFieldFluentAPI")]
+    partial class UpdateDataFieldFluentAPI
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,7 @@ namespace BasicEfCoreDemo.Migrations
                         .HasColumnName("Id");
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18, 2)")
                         .HasColumnName("Amount");
 
@@ -43,7 +44,8 @@ namespace BasicEfCoreDemo.Migrations
                         .HasColumnName("ContactName");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)")
                         .HasColumnName("Description");
 
                     b.Property<DateTimeOffset>("DueDate")
@@ -61,17 +63,18 @@ namespace BasicEfCoreDemo.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
+                        .HasMaxLength(16)
                         .HasColumnType("varchar(16)")
                         .HasColumnName("Status");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Invoices");
+                    b.ToTable("Invoices", (string)null);
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d4855e00-b4d7-4f9c-adb7-1e5a1b9983a1"),
+                            Id = new Guid("ebdef29c-2de7-494c-a397-2fe929613737"),
                             Amount = 100m,
                             ContactName = "Andrew",
                             Description = "Invoice for the first month",
@@ -82,18 +85,18 @@ namespace BasicEfCoreDemo.Migrations
                         },
                         new
                         {
-                            Id = new Guid("96d93733-ab0f-416a-b25a-90bca748e5dd"),
+                            Id = new Guid("b8d7f60c-dc19-4589-83f7-a3d2fec889e5"),
                             Amount = 100m,
                             ContactName = "John",
                             Description = "Invoice for the Second month",
                             DueDate = new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceDate = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceNumber = "INV-002",
-                            Status = "AwaitPayment"
+                            Status = "Paid"
                         },
                         new
                         {
-                            Id = new Guid("e4ec23fd-850f-435f-b5b5-d84bac2f383a"),
+                            Id = new Guid("fd0c482d-1b34-4b2e-a29f-960d6c427a80"),
                             Amount = 100m,
                             ContactName = "Alex",
                             Description = "Invoice for the Second month",
@@ -104,14 +107,14 @@ namespace BasicEfCoreDemo.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ce147751-0ef3-4ed5-8d5a-24057ce99b6b"),
+                            Id = new Guid("24c39211-8de4-495a-913b-9ff979dd9c7b"),
                             Amount = 100m,
                             ContactName = "Adam",
                             Description = "Invoice for the Second month",
                             DueDate = new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceDate = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceNumber = "INV-004",
-                            Status = "AwaitPayment"
+                            Status = "Draft"
                         });
                 });
 #pragma warning restore 612, 618

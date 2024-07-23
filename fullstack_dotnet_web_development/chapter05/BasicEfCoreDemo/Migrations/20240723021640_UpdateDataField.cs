@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BasicEfCoreDemo.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateTableField : Migration
+    public partial class UpdateDataField : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,22 +16,22 @@ namespace BasicEfCoreDemo.Migrations
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("373d0e1b-98fa-4997-a354-dffe87fd5c9f"));
+                keyValue: new Guid("4c02a57f-5435-4df5-84c8-23e45a00c204"));
 
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("e12f135c-2dc6-4f25-a13c-d7ec6d362637"));
+                keyValue: new Guid("62e787d0-771a-4c73-a471-5884bdae3519"));
 
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("e1320f45-3b15-4bbe-bfe2-368e531884a6"));
+                keyValue: new Guid("64d41cde-63fa-4ab1-b74a-3e7ec62a9147"));
 
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("f0172da5-0dd2-45a3-8f09-2283c586d0a9"));
+                keyValue: new Guid("aa2270ea-eadd-46d4-bdec-daf51f863535"));
 
             migrationBuilder.AlterColumn<string>(
                 name: "Status",
@@ -92,10 +92,10 @@ namespace BasicEfCoreDemo.Migrations
                 columns: new[] { "Id", "Amount", "ContactName", "Description", "DueDate", "InvoiceDate", "InvoiceNumber", "Status" },
                 values: new object[,]
                 {
-                    { new Guid("96d93733-ab0f-416a-b25a-90bca748e5dd"), 100m, "John", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-002", "AwaitPayment" },
-                    { new Guid("ce147751-0ef3-4ed5-8d5a-24057ce99b6b"), 100m, "Adam", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-004", "AwaitPayment" },
-                    { new Guid("d4855e00-b4d7-4f9c-adb7-1e5a1b9983a1"), 100m, "Andrew", "Invoice for the first month", new DateTimeOffset(new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-001", "AwaitPayment" },
-                    { new Guid("e4ec23fd-850f-435f-b5b5-d84bac2f383a"), 100m, "Alex", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-003", "AwaitPayment" }
+                    { new Guid("026f8dc4-81f1-4b20-988d-de48755d6418"), 100m, "John", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-002", "Paid" },
+                    { new Guid("2eb5eee3-18ef-45dd-ab56-98597faf4cb9"), 100m, "Alex", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-003", "AwaitPayment" },
+                    { new Guid("7ed88894-bf5a-4d3c-8d89-daf9032e5275"), 100m, "Adam", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-004", "Draft" },
+                    { new Guid("b6a41cac-ef0a-4546-bffe-a6a7f67a0c5c"), 100m, "Andrew", "Invoice for the first month", new DateTimeOffset(new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-001", "AwaitPayment" }
                 });
         }
 
@@ -105,22 +105,22 @@ namespace BasicEfCoreDemo.Migrations
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("96d93733-ab0f-416a-b25a-90bca748e5dd"));
+                keyValue: new Guid("026f8dc4-81f1-4b20-988d-de48755d6418"));
 
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("ce147751-0ef3-4ed5-8d5a-24057ce99b6b"));
+                keyValue: new Guid("2eb5eee3-18ef-45dd-ab56-98597faf4cb9"));
 
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("d4855e00-b4d7-4f9c-adb7-1e5a1b9983a1"));
+                keyValue: new Guid("7ed88894-bf5a-4d3c-8d89-daf9032e5275"));
 
             migrationBuilder.DeleteData(
                 table: "Invoices",
                 keyColumn: "Id",
-                keyValue: new Guid("e4ec23fd-850f-435f-b5b5-d84bac2f383a"));
+                keyValue: new Guid("b6a41cac-ef0a-4546-bffe-a6a7f67a0c5c"));
 
             migrationBuilder.AlterColumn<int>(
                 name: "Status",
@@ -181,10 +181,10 @@ namespace BasicEfCoreDemo.Migrations
                 columns: new[] { "Id", "Amount", "ContactName", "Description", "DueDate", "InvoiceDate", "InvoiceNumber", "Status" },
                 values: new object[,]
                 {
-                    { new Guid("373d0e1b-98fa-4997-a354-dffe87fd5c9f"), 100m, "Alex", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-003", 1 },
-                    { new Guid("e12f135c-2dc6-4f25-a13c-d7ec6d362637"), 100m, "Andrew", "Invoice for the first month", new DateTimeOffset(new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-001", 1 },
-                    { new Guid("e1320f45-3b15-4bbe-bfe2-368e531884a6"), 100m, "Adam", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-004", 1 },
-                    { new Guid("f0172da5-0dd2-45a3-8f09-2283c586d0a9"), 100m, "John", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-002", 1 }
+                    { new Guid("4c02a57f-5435-4df5-84c8-23e45a00c204"), 100m, "Andrew", "Invoice for the first month", new DateTimeOffset(new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-001", 1 },
+                    { new Guid("62e787d0-771a-4c73-a471-5884bdae3519"), 100m, "Alex", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-003", 1 },
+                    { new Guid("64d41cde-63fa-4ab1-b74a-3e7ec62a9147"), 100m, "Adam", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-004", 0 },
+                    { new Guid("aa2270ea-eadd-46d4-bdec-daf51f863535"), 100m, "John", "Invoice for the Second month", new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "INV-002", 2 }
                 });
         }
     }

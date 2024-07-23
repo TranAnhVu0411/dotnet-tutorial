@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BasicEfCoreDemo.Migrations
 {
     [DbContext(typeof(InvoiceDbContext))]
-    [Migration("20240719081027_AddSeedData")]
+    [Migration("20240723021443_AddSeedData")]
     partial class AddSeedData
     {
         /// <inheritdoc />
@@ -61,7 +61,7 @@ namespace BasicEfCoreDemo.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e12f135c-2dc6-4f25-a13c-d7ec6d362637"),
+                            Id = new Guid("4c02a57f-5435-4df5-84c8-23e45a00c204"),
                             Amount = 100m,
                             ContactName = "Andrew",
                             Description = "Invoice for the first month",
@@ -72,18 +72,18 @@ namespace BasicEfCoreDemo.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f0172da5-0dd2-45a3-8f09-2283c586d0a9"),
+                            Id = new Guid("aa2270ea-eadd-46d4-bdec-daf51f863535"),
                             Amount = 100m,
                             ContactName = "John",
                             Description = "Invoice for the Second month",
                             DueDate = new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceDate = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceNumber = "INV-002",
-                            Status = 1
+                            Status = 2
                         },
                         new
                         {
-                            Id = new Guid("373d0e1b-98fa-4997-a354-dffe87fd5c9f"),
+                            Id = new Guid("62e787d0-771a-4c73-a471-5884bdae3519"),
                             Amount = 100m,
                             ContactName = "Alex",
                             Description = "Invoice for the Second month",
@@ -94,14 +94,14 @@ namespace BasicEfCoreDemo.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e1320f45-3b15-4bbe-bfe2-368e531884a6"),
+                            Id = new Guid("64d41cde-63fa-4ab1-b74a-3e7ec62a9147"),
                             Amount = 100m,
                             ContactName = "Adam",
                             Description = "Invoice for the Second month",
                             DueDate = new DateTimeOffset(new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceDate = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             InvoiceNumber = "INV-004",
-                            Status = 1
+                            Status = 0
                         });
                 });
 #pragma warning restore 612, 618
