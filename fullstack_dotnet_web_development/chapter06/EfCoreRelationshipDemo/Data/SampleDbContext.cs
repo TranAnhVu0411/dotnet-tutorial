@@ -90,7 +90,5 @@ namespace EfCoreRelationshipDemo.Data
                 // ,b => b.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
             );
         }
-        public DbSet<EfCoreRelationshipDemo.Models.Address> Address { get; set; } = default!;
-        public DbSet<EfCoreRelationshipDemo.Models.Contact> Contact { get; set; } = default!;
     }
 }
